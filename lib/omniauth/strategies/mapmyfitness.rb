@@ -8,7 +8,7 @@ module OmniAuth
 
       # This is where you pass the options you would pass when
       # initializing your consumer from the OAuth gem.
-      option :client_options, {:site => "http://api.mapmyfitness.com/3.1",
+      option :client_options, {:site => "https://api.mapmyfitness.com/3.1",
                                :authorize_url => "https://www.mapmyfitness.com/oauth/authorize/",
                                :scheme => :query_string,
                                :http_method => :post}
