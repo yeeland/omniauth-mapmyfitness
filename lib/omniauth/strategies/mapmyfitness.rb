@@ -8,12 +8,10 @@ module OmniAuth
 
       # This is where you pass the options you would pass when
       # initializing your consumer from the OAuth gem.
-      option :client_options, {:site => "https://api.mapmyfitness.com",
-                               :authorize_path => "/3.1/oauth/authorize",
-                               :request_token_path => '/3.1/oauth/request_token',
-                               :access_token_path => '/3.1/oauth/access_token',
+      option :client_options, {:site => "https://api.mapmyfitness.com/3.1",
+                               :authorize_url => "https://www.mapmyfitness.com/oauth/authorize/",
                                :scheme => :query_string,
-                               :http_method => :get}
+                               :http_method => :post}
 
       # These are called after authentication has succeeded. If
       # possible, you should try to set the UID without making
@@ -44,7 +42,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= MultiJson.decode(access_token.get('/3.1/users/get_user').body)['result']['output']['user']
+        @raw_info ||= MultiJson.decode(access_token.get('/users/get_user').body)['result']['output']['user']
       end
     end
   end
